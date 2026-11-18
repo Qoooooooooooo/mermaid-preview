@@ -1,0 +1,60 @@
+:root {
+  --background: #181818;
+  --primary-color: #14263D;
+  --primary-text-color: #91C1FA;
+  --primary-border-color: #91C1FA;
+  --secondary-color: #14263D;
+  --tertiary-color: #14263D;
+  --label-text-color: #91C1FA;
+  --line-color: #8B8B8B;
+  --edge-label-background: transparent;
+  --font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-size: 14px;
+  --flowchart-curve: basis;
+}
+
+.node rect {
+  rx: 10px;
+  ry: 10px;
+}
+
+.node rect.label-container {
+  rx: 10px;
+  ry: 10px;
+}
+
+.edgeLabel {
+  background: transparent !important;
+}
+
+.edgeLabel foreignObject {
+  background: transparent !important;
+}
+
+.edgeLabel foreignObject div.labelBkg {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.edgeLabel foreignObject span.edgeLabel {
+  background: transparent !important;
+  border: none !important;
+}
+
+.edgeLabel span.edgeLabel p {
+  background: #181818 !important;
+  color: #91C1FA !important;
+  border: 1px solid #91C1FA !important;
+  border-radius: 4px !important;
+  padding: 2px 6px !important;
+  box-sizing: border-box !important;
+  margin: 0 !important;
+}
+
+.edgeLabel rect {
+  fill: #181818 !important;
+  stroke: none !important;
+  opacity: 1 !important;
+}
