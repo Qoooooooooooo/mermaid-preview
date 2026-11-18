@@ -1,0 +1,183 @@
+/* ============================================================
+   Mermaid Preview — 深蓝配色主题（匹配参考图）
+   画布 #181818 / 节点 #14263D / 边框 #39567A / 文字 #91C1FA
+   连线 #8B8B8B / 边标签胶囊 #172D48 + #39567A
+   兼容 Mermaid 11（VS Code 插件 bierner.markdown-mermaid）
+   ============================================================ */
+
+:root {
+  --mm-canvas-bg: #181818;
+  --mm-node-bg: #14263D;
+  --mm-node-border: #39567A;
+  --mm-node-text: #91C1FA;
+  --mm-edge: #8B8B8B;
+  --mm-edge-text: #91C1FA;
+  --mm-pill-bg: #172D48;
+  --mm-pill-border: #39567A;
+  --mm-font: "Segoe UI", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+
+/* ---------- 画布 ---------- */
+html body,
+body.vscode-light,
+body.vscode-dark,
+body.vscode-high-contrast {
+  background-color: var(--mm-canvas-bg) !important;
+}
+
+.mermaid,
+svg[id^="mermaid-"],
+svg.mermaid {
+  background-color: var(--mm-canvas-bg) !important;
+  font-family: var(--mm-font) !important;
+}
+
+svg[id^="mermaid-"] {
+  max-width: 100% !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+  padding: 24px !important;
+  border-radius: 8px !important;
+}
+
+/* ---------- 普通节点：圆角深蓝矩形 ---------- */
+svg[id^="mermaid-"] .node rect,
+svg[id^="mermaid-"] .node .label-container rect,
+svg[id^="mermaid-"] .node path.basic,
+svg[id^="mermaid-"] g.node > rect {
+  fill: var(--mm-node-bg) !important;
+  stroke: var(--mm-node-border) !important;
+  stroke-width: 1px !important;
+  rx: 10px !important;
+  ry: 10px !important;
+}
+
+/* ---------- 判断/决策节点：虚线边框 ---------- */
+svg[id^="mermaid-"] .node polygon,
+svg[id^="mermaid-"] .node path.label-container,
+svg[id^="mermaid-"] g.node.dashed > rect,
+svg[id^="mermaid-"] g.node.dashed > polygon {
+  fill: var(--mm-node-bg) !important;
+  stroke: var(--mm-pill-border) !important;
+  stroke-width: 1.2px !important;
+  stroke-dasharray: 4 4 !important;
+  stroke-linejoin: round !important;
+}
+
+/* ---------- 圆形 / 椭圆节点 ---------- */
+svg[id^="mermaid-"] .node circle,
+svg[id^="mermaid-"] .node ellipse {
+  fill: var(--mm-node-bg) !important;
+  stroke: var(--mm-node-border) !important;
+  stroke-width: 1px !important;
+}
+
+/* ---------- 节点文字 ---------- */
+svg[id^="mermaid-"] .node text,
+svg[id^="mermaid-"] .nodeLabel,
+svg[id^="mermaid-"] .node .label,
+svg[id^="mermaid-"] .node foreignObject,
+svg[id^="mermaid-"] .node foreignObject div,
+svg[id^="mermaid-"] .node foreignObject span {
+  color: var(--mm-node-text) !important;
+  fill: var(--mm-node-text) !important;
+  font-family: var(--mm-font) !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  background-color: transparent !important;
+}
+
+/* ---------- 连线 ---------- */
+svg[id^="mermaid-"] .flowchart-link,
+svg[id^="mermaid-"] path.flowchart-link,
+svg[id^="mermaid-"] .edgePath .path,
+svg[id^="mermaid-"] .edgePath path,
+svg[id^="mermaid-"] .edge-thickness-normal {
+  stroke: var(--mm-edge) !important;
+  stroke-width: 1.4px !important;
+  fill: none !important;
+}
+
+/* ---------- 箭头 ---------- */
+svg[id^="mermaid-"] .marker,
+svg[id^="mermaid-"] .marker path,
+svg[id^="mermaid-"] .arrowMarkerPath {
+  fill: var(--mm-edge) !important;
+  stroke: var(--mm-edge) !important;
+}
+
+/* ---------- 边标签：深蓝胶囊 + 蓝色描边 ---------- */
+/* Mermaid 11 用 foreignObject > div.labelBkg > span.edgeLabel > p 渲染边标签，
+   默认样式是 background-color（不是 SVG fill），且内联在 <style> 里，需 !important 覆盖 */
+svg[id^="mermaid-"] .edgeLabel,
+svg[id^="mermaid-"] .edgeLabel rect,
+svg[id^="mermaid-"] g.edgeLabel > g > rect {
+  fill: var(--mm-pill-bg) !important;
+  stroke: var(--mm-pill-border) !important;
+  stroke-width: 1px !important;
+  rx: 14px !important;
+  ry: 14px !important;
+  opacity: 1 !important;
+}
+
+/* 只有最外层 .labelBkg 绘制胶囊背景与边框，内层元素全部透明，避免多层边框叠加 */
+svg[id^="mermaid-"] g.edgeLabel foreignObject {
+  background-color: transparent !important;
+}
+
+svg[id^="mermaid-"] g.edgeLabel .labelBkg {
+  background-color: var(--mm-pill-bg) !important;
+  border: 1px solid var(--mm-pill-border) !important;
+  border-radius: 14px !important;
+  box-sizing: border-box !important;
+  padding: 1px 7px !important;
+  line-height: 1.5 !important;
+}
+
+svg[id^="mermaid-"] g.edgeLabel span.edgeLabel,
+svg[id^="mermaid-"] g.edgeLabel span.edgeLabel p {
+  background-color: transparent !important;
+  border: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  color: var(--mm-node-text) !important;
+  fill: var(--mm-node-text) !important;
+  font-family: var(--mm-font) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  white-space: nowrap !important;
+}
+
+svg[id^="mermaid-"] .edgeLabel text,
+svg[id^="mermaid-"] .edgeLabel .label {
+  color: var(--mm-node-text) !important;
+  fill: var(--mm-node-text) !important;
+  font-family: var(--mm-font) !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+}
+
+/* ---------- subgraph / 分组 ---------- */
+svg[id^="mermaid-"] .cluster rect {
+  fill: rgba(23, 45, 72, 0.35) !important;
+  stroke: var(--mm-node-border) !important;
+  stroke-width: 1px !important;
+  stroke-dasharray: 6 5 !important;
+  rx: 12px !important;
+}
+
+svg[id^="mermaid-"] .cluster text,
+svg[id^="mermaid-"] .cluster .cluster-label,
+svg[id^="mermaid-"] .cluster foreignObject div,
+svg[id^="mermaid-"] .cluster foreignObject span {
+  color: var(--mm-node-text) !important;
+  fill: var(--mm-node-text) !important;
+  font-weight: 600 !important;
+}
+
+/* ---------- 其他图表类型兼容 ---------- */
+svg[id^="mermaid-"] .task,
+svg[id^="mermaid-"] .actor,
+svg[id^="mermaid-"] .label {
+  font-family: var(--mm-font) !important;
+}
